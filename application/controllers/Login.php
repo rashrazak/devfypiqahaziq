@@ -76,4 +76,61 @@ class Login extends CI_Controller {
 					   } 
 					}
 	}
+    function resize($path,$file){
+        $config['image_library']='gd2';
+        $config['source_image']=$path ;
+        $config['create_thumb']=FALSE ;
+        $config['maintain_ratio']=TRUE ;
+        $config['width']=500 ;
+        $config['height']=700 ;
+        $config['new_image']='./assets/imagex/'.$file ;
+        
+        $this->load->library('image_lib',$config);
+        $this->image_lib->resize();
+    }
+	public function manualLogin(){
+
+		$data = $this->input->post();
+		$email = $data['email'];
+		$password = $data['password'];
+	}
+	public function manualSignUp(){
+
+		$datay = $this->input->post();
+		// var_dump($datay);exit;
+		if (empty($datay)) {
+
+			 $this->load->view('signup');
+		}else{
+			$email = $datay['email'];
+			$password = $datay['password'];
+			$fname = $datay['fname'];
+
+
+		 	$path = './assets/imagex/signup';
+	        chmod($path, 0777);
+
+	        $config['upload_path'] = $path;
+	        $config['allowed_types'] = 'gif|jpg|png';
+	        $config['max_size'] = '1000';
+	        $config['max_width']  = '';
+	        $config['max_height']  = '';
+	        $config['overwrite'] = TRUE;
+	        $config['remove_spaces'] = TRUE;
+	        
+	        $this->load->library('upload', $config);
+
+	        if ($this->upload->do_upload()) {
+	            $data = array('upload_data' => $this->upload->data());
+	            $datax = $this->upload->data();
+	            // var_dump($datax['file_name']);exit;
+	            $this->resize($data['upload_data']['full_path'],$data['upload_data']['file_name']);
+	            
+	            $return = $this->Fypmodel->signUp($datax['file_name'], $email, $password, $fname);
+	            if ($return == true) {
+	            	redirect('/');
+	            }
+	        }
+		}
+	}
 }

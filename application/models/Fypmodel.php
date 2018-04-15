@@ -229,7 +229,7 @@
             $query = array(
                 'status'         => $paid
              );
-            $this->db->set('datebought', 'NOW()', FALSE);
+            // $this->db->set('datebought', 'NOW()', FALSE);
             $this->db->where('email',$email);
             $this->db->update('cart', $query);
             
@@ -253,13 +253,13 @@
                 'noitem'      => $items,
                 'url'         => $url,
                 'price'       => $price,
-                'email'       => $email,
+                'email'       => $email,    
                 'hp'          => $hp,
                 'address'     => $address,
                 'paid'        => 0);
 
 
-            $this->db->set('time', 'NOW()', FALSE);
+            // $this->db->set('time', 'NOW()', FALSE);
             $this->db->insert('payment', $query);
             
             return true;
@@ -315,6 +315,17 @@
             $this->db->where('id', $user_id);
             $query = $this->db->get('user');
             return $query->result_array();
+        }
+
+        public function signUp($url, $email, $password, $fname){
+            $query = array(
+                'name'      => $fname,
+                'emailx'    => $email,
+                'photourl'  => $url);
+            
+            $this->db->insert('cust_email', $query);
+            
+            return true;
         }
 
         

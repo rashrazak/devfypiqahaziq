@@ -84,9 +84,22 @@
       <h2>E-RBAS</h2>
       <?php if ($emailc == null) { ?>
           <div id="gmail-login">
-            <h4 class="my-4 ">Login to buy</h4>
-            <div class="list-group">
+            <button type="button" class="btn btn-primary" id="poppin1">Login to buy</button>
+            <div id="poppin2">
+              <br>
               <button onclick="registerGoogle()" class="btn-info">Gmail <i class="fa fa-envelope"></i> </button>
+              <br>
+              <left>OR</left>
+              <br>
+              <form action="<?php echo site_url('Login/manualLogin'); ?>" class="form-control" method="post">
+                <input type="email" name="email" placeholder="insert email" class="form-group">
+                <input type="password" name="password" placeholder="password" class="form-group">
+                <button type="submit" name="submit">Submit</button>
+              </form>
+              <br>
+              <left>OR</left>
+              <a href="<?php echo site_url('Login/manualSignUp'); ?>"><u>Sign Up</u> </a>
+
             </div>
           </div>
           <br>

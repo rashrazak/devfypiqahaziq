@@ -123,7 +123,12 @@
                                     <h4 class="card-title">
                                         <a href="#"><?php echo $value->name; ?></a>
                                     </h4>
-                                    <h5>RM: <?php echo $value->price; ?></h5>
+                                    <?php 
+                                        $price = $value->price;
+                                        $quantity = $value->quantity;
+                                        $totalPrice = $price * $quantity;
+                                     ?>
+                                    <h5>RM: <?php echo $totalPrice; ?></h5>
                                     <h5>Quantity: <?php echo $value->quantity; ?></h5>
                                 </div>
                             </div>
@@ -144,7 +149,7 @@
                             </div>
                         </div>
                         <?php
-                        $pricex = $pricex + $value->price; 
+                        $pricex = $pricex + $totalPrice; 
                         $LIST++;
                         ?>
                     <?php } ?>
