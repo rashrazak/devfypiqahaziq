@@ -39,7 +39,7 @@ $(document).ready(function() {
     
     
         function ajax(id){
-            var path = 'http://dev.fypiqa.com/index.php/ajax/showitem';
+            var path = 'http://dev.fypiqa.com/index.php/ajax/deleteitem';
             return $.ajax({
                 type: "POST",
                 data: {
