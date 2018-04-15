@@ -87,3 +87,4 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 define('LOGOUTX', 'component/logout'); //logout button
 define('IMAGEX', 'http://dev.fypiqa.com/assets/imagex/');//upload image to imagex
 define('RECEIPTX', 'http://dev.fypiqa.com/assets/receipt/');//upload receipt to imagex
+define('SIGNUPX', 'http://dev.fypiqa.com/assets/imagex/signup/');

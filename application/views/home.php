@@ -109,6 +109,7 @@
             <h4 class="my-4 "></h4>
             <div class="list-group">
               <img src="<?php echo $photo; ?>" alt="" style="width:100%;">
+              <img src="<?php echo SIGNUPX.$photo; ?>" style="width:100%;height:100%;">
               <h1><?php echo $namec; ?></h1>
             </div>
           </div>
@@ -127,9 +128,9 @@
     
     <div class="col-lg-9">
       <div class="w3-content w3-section">
-        <a href=""><img class="mySlides w3-animate-fading" src="http://placehold.it/900x350" style="width:100%"></a>
-        <a href=""><img class="mySlides w3-animate-fading" src="http://placehold.it/900x350" style="width:100%"></a>
-        <a href=""><img class="mySlides w3-animate-fading" src="http://placehold.it/900x350" style="width:100%"></a>
+        <a href=""><img class="mySlides w3-animate-fading" src="<?php echo IMAGEX?>letakgambardisini" style="width:100%"></a>
+        <a href=""><img class="mySlides w3-animate-fading" src="<?php echo IMAGEX?>letakgambardisini" style="width:100%"></a>
+        <a href=""><img class="mySlides w3-animate-fading" src="<?php echo IMAGEX?>letakgambardisini" style="width:100%"></a>
         <a href=""><img class="mySlides w3-animate-fading" src="http://placehold.it/900x350" style="width:100%"></a>
       </div>
       <div class=" col-sm-offset-3">

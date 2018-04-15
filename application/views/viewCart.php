@@ -115,7 +115,7 @@
                     <div class="row  mb-4">
                     <?php foreach ($data as $key => $value) { ?>
                         <div class="col-lg-4  mb-4" style="">
-                            <img src="<?php echo IMAGEX.$value->url; ?>" style="width:100%;height:100%;">
+                            <img src="<?php echo IMAGEX.$value->url; ?>" >
                         </div>
                         <div class="col-lg-3  mb-4" style="padding-left:0;">
                             <div class="card h-100">

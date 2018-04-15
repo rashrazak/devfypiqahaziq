@@ -195,6 +195,19 @@
             } 
             
         }
+
+        public function loginCustomer($cust_email){
+            if( empty($cust_email) )
+            {
+                return array();
+            }
+
+            $query  = 'SELECT * FROM `cust_email`'
+                    . ' WHERE `emailx` = ?';
+            $bind   = array( $cust_email ); 
+            return $this->db->query( $query, $bind )->row_array();
+            
+        }
         public function insertCustomer($user_data){
             $this->db->insert('cust_email', $user_data);
         }
@@ -321,7 +334,8 @@
             $query = array(
                 'name'      => $fname,
                 'emailx'    => $email,
-                'photourl'  => $url);
+                'photourl'  => $url,
+                'password' => $password);
             
             $this->db->insert('cust_email', $query);
             

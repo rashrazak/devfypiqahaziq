@@ -93,6 +93,20 @@ class Login extends CI_Controller {
 		$data = $this->input->post();
 		$email = $data['email'];
 		$password = $data['password'];
+
+		$return = $this->Fypmodel->loginCustomer($email);
+
+		// var_dump($return);exit; 
+
+			$set_data = array(		
+			'nameC'     => $return['name'] ,
+			'emailC'    => $email ,
+			'hpC'	    => $return['hp'],
+			'photourlC' => $return['photourl'] 
+			);
+
+			$this->session->set_userdata($set_data);
+			redirect('/');
 	}
 	public function manualSignUp(){
 
