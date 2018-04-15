@@ -8,42 +8,22 @@ class Register extends CI_Controller {
 		$this->load->view('register/sellerregister'); //register in login page
     }
 
-    public function seller2()
-	{
-        $this->form_validation->set_rules('email','Email','required');
-        $this->form_validation->set_rules('password', 'Password', 'required|matches[password1]');
-        $this->form_validation->set_rules('password1', 'Password Confirmation', 'required');
-        $this->form_validation->set_rules('fname', 'Full Name', 'required');
-        $this->form_validation->set_rules('address', 'Address', 'required');
-        $this->form_validation->set_rules('icpp', 'IC / Company Registration', 'required');
-       
-        $this->form_validation->set_rules('hp', 'Nombor Telefon', 'required');
-        $this->form_validation->set_rules('account', 'Akaun Bank', 'required');
-        
-        if($this->form_validation->run()== FALSE ){
+    public function seller2(){
 
-        $data = array('errors' => validation_errors());
-
-        $this->session->set_flashdata($data); //set_userdata
-
-        redirect('Register/seller2');
-        }else{
            
                
-                 $fnamex =$this->input->post('fname');
-                $addressx = $this->input->post('address');
-                $icppx = $this->input->post('icpp'); 
-                
-                $hpx = $this->input->post('hp');
-                $maybankx = $this->input->post('account'); 
-                $passwordx = $this->input->post('password');
-                $emailx = $this->input->post('email');
-                $user_id =$this->Fypmodel->register_user( $fnamex, $addressx, $icppx, $hpx, $maybankx, $emailx , $passwordx);
-                echo $user_id;
-                $this->Fypmodel->register_sales($user_id);
-                $data1 = array('successRegister' => 'Registration is success ! please login');
-                redirect('Login', $data1);
-        }
+        $fnamex =$this->input->post('fname');
+        $addressx = $this->input->post('address');
+        $icppx = $this->input->post('icpp'); 
+        
+        $hpx = $this->input->post('hp');
+        $maybankx = $this->input->post('account'); 
+        $passwordx = $this->input->post('password');
+        $emailx = $this->input->post('email');
+         // var_dump($emailx);exit;
+        $this->Fypmodel->register_user( $fnamex, $addressx, $icppx, $hpx, $maybankx, $emailx , $passwordx);
+       
+        redirect('Login', $data1);
     }
 
     function resize($path,$file){

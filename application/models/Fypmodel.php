@@ -16,7 +16,6 @@
             'maybankaccount' => $maybankx
 
             );  
-            $this->db->set('dateregistered', 'NOW()', FALSE);
             $this->db->insert('user', $query);
             $insert_id = $this->db->insert_id();
             return  $insert_id;
