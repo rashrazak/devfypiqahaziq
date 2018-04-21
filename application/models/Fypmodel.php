@@ -272,7 +272,7 @@
                 'paid'        => 0);
 
 
-            // $this->db->set('time', 'NOW()', FALSE);
+            $this->db->set('time', 'NOW()', FALSE);
             $this->db->insert('payment', $query);
             
             return true;
@@ -335,7 +335,8 @@
                 'name'      => $fname,
                 'emailx'    => $email,
                 'photourl'  => $url,
-                'password' => $password);
+                'password' => $password,
+                'type'     => 'manual');
             
             $this->db->insert('cust_email', $query);
             

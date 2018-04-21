@@ -9,6 +9,7 @@ class Ajax extends CI_Controller {
         $cust_email = $param['email'];
         $cust_hp    = $param['hp'];
         $cust_photo = $param['photoURL'];
+        $cust_type  = 'gmail';
         //check if exist
        $return = $this->Fypmodel->checkCustomer($cust_email);
        //$return = true;
@@ -18,7 +19,8 @@ class Ajax extends CI_Controller {
                 'name' => $cust_name ,
                 'emailx' => $cust_email ,
                 'hp'	=> $cust_hp,
-                'photourl' => $cust_photo 
+                'photourl' => $cust_photo,
+                'type' => 'gmail'
             );
             $return = $this->Fypmodel->insertCustomer($user_data);
         }
@@ -26,7 +28,8 @@ class Ajax extends CI_Controller {
                 'nameC'     => $cust_name ,
                 'emailC'    => $cust_email ,
                 'hpC'	    => $cust_hp,
-                'photourlC' => $cust_photo 
+                'photourlC' => $cust_photo,
+                'cust_type' => 'gmail'
             );
             $this->session->set_userdata($set_data);
 

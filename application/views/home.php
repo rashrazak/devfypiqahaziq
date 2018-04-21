@@ -10,6 +10,7 @@
         $emailc    = $this->session->userdata('emailC');
         $namec     = $this->session->userdata('nameC');
         $photo     = $this->session->userdata('photourlC');
+        $cust_type = $this->session->userdata('cust_type');
     
         if ($emailc){
 
@@ -108,9 +109,12 @@
           <div>
             <h4 class="my-4 "></h4>
             <div class="list-group">
-              <img src="<?php echo $photo; ?>" alt="" style="width:100%;">
-              <img src="<?php echo SIGNUPX.$photo; ?>" style="width:100%;height:100%;">
-              <h1><?php echo $namec; ?></h1>
+              <?php if($cust_type == 'gmail'){ ?>
+                <img src="<?php echo $photo; ?>" alt="" style="width:100%;" id="imgFB">
+              <?php }else{ ?>
+                <img src="<?php echo SIGNUPX.$photo; ?>" style="width:100%;height:100%;" id="imgDB">
+              <?php } ?>
+                <h1><?php echo $namec; ?></h1>
             </div>
           </div>
 

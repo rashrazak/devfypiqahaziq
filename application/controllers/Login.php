@@ -58,7 +58,8 @@ class Login extends CI_Controller {
 								'user_id' => $user_id ,
 								'email' => $emailx ,
 								'companyname'	=> $shopx,
-								'logged_in' => true 
+								'logged_in' => true,
+								'cust_type' => 'vendor' 
 										);
 								$this->session->set_userdata($user_data);
 								//$this->session->set_flashdata('login_success','You are now logged in');
@@ -102,7 +103,8 @@ class Login extends CI_Controller {
 			'nameC'     => $return['name'] ,
 			'emailC'    => $email ,
 			'hpC'	    => $return['hp'],
-			'photourlC' => $return['photourl'] 
+			'photourlC' => $return['photourl'] ,
+			'cust_type' => 'manual'
 			);
 
 			$this->session->set_userdata($set_data);

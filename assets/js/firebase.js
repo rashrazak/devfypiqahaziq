@@ -7,6 +7,7 @@
     function registerGoogle(){
         //preventDefault();
     // firebase.auth().onAuthStateChanged(LoginIsCruel);
+        // document.getElementById("imgDB").style.display = "none";
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function(result) {
             // This gives you a Google Access Token. You can use it to access the Google API.
