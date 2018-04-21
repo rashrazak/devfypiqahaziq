@@ -125,6 +125,9 @@
         <a href="Items/search" class="list-group-item">Search Item <i class="fa  fa-search"></i></a>
         <a href="Items/cart" class="list-group-item">Cart <i class="fa fa-shopping-cart"></i></a>
         <a href="Items/history" class="list-group-item">History <i class="fa fa-history"></i></a>
+        <?php if($cust_type == 'manual'){ ?>
+        <a href="Login/manualUpdate" class="list-group-item">Update Manual <i class="fa fa-user"></i></a>
+        <?php } ?>
       </div>
       <?php } ?>
 

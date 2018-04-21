@@ -343,6 +343,29 @@
             return true;
         }
 
+        public function manualSelect($email){
+            $query  = 'SELECT *'
+                    . ' FROM `cust_email`'
+                    . ' WHERE `emailx` = ?';
+                    
+                    $bind   = array( $email );
+            
+            return $this->db->query( $query, $bind )->row_array();
+        }
+
+        public function manualUpdate($url,$name,$email,$id,$password){
+            $query = array(
+                'photourl'         => $url,
+                'name'        => $name,
+                'emailx'       => $email,
+                'password'       => $password);
+
+            $this->db->where('id',$id);
+            $this->db->update('cust_email', $query);
+            
+            return true;
+        }
+
         
     }
        

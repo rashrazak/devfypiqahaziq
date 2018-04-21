@@ -149,4 +149,61 @@ class Login extends CI_Controller {
 	        }
 		}
 	}
+	public function manualUpdatex(){
+		$datay = $this->input->post();
+		// var_dump($datay);exit;
+		if (empty($datay)) {
+
+			redirect('/');
+		}else{
+			$email = $datay['email'];
+			$password = $datay['password'];
+			$fname = $datay['fname'];
+			$id = $datay['id'];
+
+
+		 	$path = './assets/imagex/signup';
+	        chmod($path, 0777);
+
+	        $config['upload_path'] = $path;
+	        $config['allowed_types'] = 'gif|jpg|png';
+	        $config['max_size'] = '1000';
+	        $config['max_width']  = '';
+	        $config['max_height']  = '';
+	        $config['overwrite'] = TRUE;
+	        $config['remove_spaces'] = TRUE;
+	        
+	        $this->load->library('upload', $config);
+
+	        if ($this->upload->do_upload()) {
+	            $data = array('upload_data' => $this->upload->data());
+	            $datax = $this->upload->data();
+	            // var_dump($datax['file_name']);exit;
+	            $this->resize($data['upload_data']['full_path'],$data['upload_data']['file_name']);
+	            
+	            $return = $this->Fypmodel->manualUpdate($datax['file_name'],$fname, $email, $id, $password);
+	            if ($return == true) {
+	            	redirect('Logout');
+	            }
+	        }else{
+	        	echo $this->upload->display_errors();
+	        }
+		}
+	}
+	public function manualUpdate(){
+
+		if($this->session->userdata('emailC')){
+            $email = $this->session->userdata('emailC');
+            $data['user']= $this->Fypmodel->manualSelect($email);
+            // var_dump($data);exit;
+            $this->load->view('userUpdate', $data);
+            
+
+        }else{
+
+            redirect('Login');
+
+        }
+		
+	}
 }

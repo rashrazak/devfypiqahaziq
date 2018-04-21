@@ -35,11 +35,11 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-10">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                     
                                 
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-4">
                                         <label>Item Name</label>
                                         <p><?php echo $item['name']; ?></p>
                                         <br> 
@@ -50,7 +50,7 @@
                                             <div id="myresult" class="img-zoom-result"></div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-4">
                                         <label>Price</label>
                                         <p>RM <?php echo $item['price']; ?> </p>                                        
                                         <br>
@@ -101,6 +101,16 @@
 
                                         </script>
                                     </div> 
+                                    <div class="col-lg-4">
+                                        <label>Shop Name</label>
+                                        <p><?php echo $company['companyname']; ?></p>
+                                        <br><br>
+                                        <label>Contact Name</label>
+                                        <p><?php echo $company['hp']; ?></p>
+                                        <br><br>
+                                        <label>Address</label>
+                                        <p><?php echo $company['address']; ?></p>
+                                    </div>
                                 </div>
          
          

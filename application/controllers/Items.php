@@ -13,7 +13,11 @@ class Items extends CI_Controller {
         $id = $this->input->get('itemid');
         $data['item'] = $this->Fypmodel->read_item_customer($id);
         $data['item'] = $data['item'][0];
-        //var_dump($data);exit;   
+        $id           = $data['item']['userid'];
+        // var_dump($id);exit;
+        $data['company']= $this->Fypmodel->getCompanyDetails($id);
+        $data['company'] = $data['company'][0];
+        // var_dump($data);exit;   
         $this->load->view('viewitem', $data);
     }
     public function cart(){
