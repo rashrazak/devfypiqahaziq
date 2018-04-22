@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="../Welcome"  data-toggle="tooltip" data-placement="top" title="Home"><i class="fa fa-home"></i>
+              <a class="nav-link" href="<?php echo site_url('Seller'); ?>"  data-toggle="tooltip" data-placement="top" title="Home"><i class="fa fa-home"></i>
                 <span class="sr-only">(current)</span>
               </a>
             </li>
