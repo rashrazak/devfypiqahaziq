@@ -92,7 +92,7 @@
             <div class="list-group " id="Search">
             
                     <div  class="list-group-item mb-4 ">
-                        <label for="">Search Details <i class="fa  fa-search"></i></label>
+                        <label for="">Search Details (places, items) <i class="fa  fa-search"></i></label>
                         <form action="search" method="get">
                         <input type="text" name="search" placeholder="<?php echo $searchx; ?>"><br><br>
                         <input type="submit" value="Submit">

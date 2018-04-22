@@ -95,8 +95,9 @@ class Items extends CI_Controller {
         }else{
             $return['data'] = $this->Fypmodel->searchList($search);
             $return['searchx'] = $search;
+             // var_dump($return);exit;
         }
-        //var_dump($return);exit;
+       
 
         $this->load->view('viewSearch',$return);
     }

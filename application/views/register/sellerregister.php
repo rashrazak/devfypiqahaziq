@@ -51,7 +51,7 @@
                         </div>
                          <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-10">
+                                <div class="col-lg-12">
                                     
                                         <div class="form-group">
                                               <?php
@@ -68,7 +68,7 @@
                                        
                                          
                                         
-                                           <div class="col-lg-5">
+                                           <div class="col-lg-4">
                                                  <label>Full Name / Company Name</label>
 
 
@@ -87,7 +87,7 @@
                                     
                                  
                                     </div>
-                                          <div class="col-lg-5">
+                                          <div class="col-lg-4">
                 
                                                  <label>Company Address</label>
 
@@ -103,16 +103,28 @@
                                     
                                     			 ?>	
                                     			<?php echo form_textarea($data1); ?>
+                                                 <label>City</label>
+                                            
+                                                <?php //echo form_label('Username');
+                                                    $data2 = array('class' => 'form-control' , 
+                                                            'placeholder' => 'Insert City ', 
+                                                            'name'=>'city',
+                                                            'type' => 'text', 
+                                                            'autofocus' 
+                                                        );
+                                    
+                                                 ?> 
+                                                <?php echo form_input($data2); ?> 
+                                    
                                     
                                     
                                     
                                     
                                     </div>  
-                                        </div>
-                                        <br>
-                                        <div class="form-group">
-                                        <div class="col-lg-5">
-                                        <br>
+
+
+                                        <div class="col-lg-4">
+
                                             <label>IC Peribadi / Company Registration</label>
                                             
                                             	<?php //echo form_label('Username');
@@ -127,14 +139,15 @@
                                     			<?php echo form_input($data2); ?> 
                                     
                                         </div>
-                                        </div>
+
+                                  
                                        
                                        
                                          
                                        
                                         
                                          
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                         <br>
                                             <label>Phone number</label>
@@ -151,7 +164,7 @@
                                     		
                                         
                                         </div></div>
-                                         <div class="col-lg-5">
+                                         <div class="col-lg-4">
                                          <div class="form-group">
                                             <br>
                                             <label>Maybank Account</label>
@@ -161,20 +174,20 @@
                                         </div>
                                  </div>
                                         
-                                      <div class="col-lg-5"><br>
+                                      <div class="col-lg-4"><br>
                                         <div class="form-group">
                                             <label>Emel</label>
                                             <input class="form-control" placeholder="User Email" type="email" name="email">
                                            
                                         </div></div>
                                
-                                        <div class="col-lg-5"><br>
+                                        <div class="col-lg-4"><br>
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input class="form-control" name="password1" type="password" placeholder="**********">
                                             
                                         </div></div>
-                                        <div class="col-lg-5"><br>
+                                        <div class="col-lg-4"><br>
                                            <div class="form-group">
                                             <label>Confirm Password</label>
                                             <input class="form-control" type="password" name="password" placeholder="***********">

@@ -2,7 +2,7 @@
 
     class Fypmodel extends CI_Model{
         //register
-        public function register_user( $fnamex, $addressx, $icppx, $hpx, $maybankx, $emailx , $passwordx){
+        public function register_user( $fnamex, $addressx, $icppx, $hpx, $maybankx, $emailx , $passwordx,$city){
                
             $query = array(
             'emel' => $emailx,
@@ -13,7 +13,8 @@
             'icpp' => $icppx,
             'hp' => $hpx,
             'icpp' => $icppx,
-            'maybankaccount' => $maybankx
+            'maybankaccount' => $maybankx,
+            'city'=> $city
 
             );  
             $this->db->insert('user', $query);
@@ -186,7 +187,7 @@
         }
         //customer
         public function checkCustomer($cust_email){
-            $this->db->where("email",$cust_email);
+            $this->db->where("emailx",$cust_email); 
             $query = $this->db->get("cust_email");
             if ( !$query) {
                 return 0;
@@ -282,9 +283,12 @@
 
             $this->db->select('*'); 
             $this->db->from('items');
-
-            $this->db->like('name' , $search);
-            $this->db->or_like('description' , $search);
+            $this->db->join('user', 'user.id = items.userid');
+            $this->db->where('items.showpublic',1);
+            $this->db->like('items.name' , $search);
+            $this->db->or_like('items.description' , $search);
+            $this->db->or_like('user.city' , $search);
+            $this->db->or_like('user.address' , $search);
             $this->db->order_by('bought desc');
             $query =$this->db->get();
             return $query->result_array();

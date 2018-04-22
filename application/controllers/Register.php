@@ -15,13 +15,14 @@ class Register extends CI_Controller {
         $fnamex =$this->input->post('fname');
         $addressx = $this->input->post('address');
         $icppx = $this->input->post('icpp'); 
+        $city = $this->input->post('city'); 
         
         $hpx = $this->input->post('hp');
         $maybankx = $this->input->post('account'); 
         $passwordx = $this->input->post('password');
         $emailx = $this->input->post('email');
          // var_dump($emailx);exit;
-        $this->Fypmodel->register_user( $fnamex, $addressx, $icppx, $hpx, $maybankx, $emailx , $passwordx);
+        $this->Fypmodel->register_user( $fnamex, $addressx, $icppx, $hpx, $maybankx, $emailx , $passwordx,$city);
        
         redirect('Login', $data1);
     }
