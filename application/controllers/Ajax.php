@@ -77,6 +77,14 @@ class Ajax extends CI_Controller {
         echo json_encode(array('success' => $id ,'return'=>$return ));
 
     }
+    public function cancelWithReason(){
+        $id = $this->input->post( 'id' );
+        $reason = $this->input->post( 'reason' );
+        $this->Fypmodel->addItemWithOne($id);    
+        $return = $this->Fypmodel->prepareItem($id);
+        echo json_encode(array('success' => $id ,'return'=>$return ));
+
+    }
     public function cancelItem(){
         $id = $this->input->post( 'id' );
         $reason = $this->input->post( 'reason' );

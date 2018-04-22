@@ -177,32 +177,108 @@ class Seller extends CI_Controller {
     public function upd_items(){
 
     }
+    public function history(){
 
+        $user_id = $this->session->userdata('user_id');
+        $return['data'] = $this->Fypmodel->historyListVendor($user_id);
+        // var_dump($return);exit;
+        $this->load->view('seller/history',$return);
 
+    }
+    public function subscription(){
+        if($this->session->userdata('logged_in')){
+            $user_id = $this->session->userdata('user_id');
+            $emailx  = $this->session->userdata('email');
+            $month   = date('F');
+            $year    = date('Y');
+            $return  = $this->Fypmodel->check_subscription($month, $year, $emailx);
+            if (empty($return)) {
+                $data['unpaid'] = true;
+            }else{
+                $data['unpaid'] = false;
+            }
+            $data['read']  = $this->Fypmodel->read_subscription( $emailx);
 
+            $this->load->view('seller/subscription', $data);
+            
 
+        }else{
 
+            redirect('Login');
 
+        }
+    }
+    public function subscriptionx(){
+        $month   = $this->input->post('month');
+        $year   = $this->input->post('year');
+        $status   = 'paid';
+        $email  = $this->session->userdata('email');
 
+        $path = './assets/imagex/subscription/';
+        chmod($path, 0777);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        $config['upload_path'] = $path;
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '1000';
+        $config['max_width']  = '';
+        $config['max_height']  = '';
+        $config['overwrite'] = TRUE;
+        $config['remove_spaces'] = TRUE;
+        
+        $this->load->library('upload', $config);
+        // var_dump($hp);exit;
+        if ($this->upload->do_upload()) {
+            $data = array('upload_data' => $this->upload->data());
+            $datax = $this->upload->data();
+            //var_dump($datax['file_name']);exit;
+            $this->resize($data['upload_data']['full_path'],$data['upload_data']['file_name']);
+        }else{
+            $error = array('error' => $this->upload->display_errors());
+            var_dump($error);exit;
+        }
+            $return = $this->Fypmodel->pay_subscription($datax['file_name'], $month ,$year, $status, $email);
+            if ($return == true) {
+                redirect('Seller/subscription');
+            }
+    }
+    function resize($path,$file){
+        $config['image_library']='gd2';
+        $config['source_image']=$path ;
+        $config['create_thumb']=FALSE ;
+        $config['maintain_ratio']=TRUE ;
+        $config['width']=500 ;
+        $config['height']=700 ;
+        $config['new_image']='./assets/imagex/'.$file ;
+        
+        $this->load->library('image_lib',$config);
+        $this->image_lib->resize();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -26,13 +26,13 @@
 
       if (person != null) {
 
-        ajax2(id,person);
+        ajax2x(id,person);
       }
       
 
     });
-    function ajax2(id,person){
-        var path = 'http://dev.fypiqa.com/index.php/ajax/prepareItem';
+    function ajax2x(id,person){
+        var path = 'http://dev.fypiqa.com/index.php/ajax/cancelItem';
         return $.ajax({
             type: "POST",
             data: {

@@ -13,7 +13,7 @@
             if ($login){
 
                 echo ' <li class="nav-item">
-                <a class="navbar-brand" href="#"><font color="gold"> Welcome Back! '.$emailx.'</font></a>
+                <a class="navbar-brand" href="#"><font color="gold"> Subscription, '.$emailx.'</font></a>
               </li>';
                
                 
@@ -79,32 +79,62 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-          <h1 class="my-4"><?php echo $shopName[0]['fname']; ?></h1>
+          <h1 class="my-4">Subscription</h1>
           <div class="list-group">
-            <a href="seller/items" class="list-group-item"> Items</a>
-            <a href="seller/history" class="list-group-item"> History</a>
-            <a href="seller/subscription" class="list-group-item"> Subscription</a>
+            <a href="<?php echo site_url('Seller/items') ?>" class="list-group-item"> Items</a>
+            <a href="<?php echo site_url('Seller/history') ?>" class="list-group-item"> History</a>
 
             
           </div>
         </div>
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
-          <div class="list-group">  
-            <h4>Latest bought..</h4> 
+          <div class="form-control">  
+            <p>Month :<?php echo date('F'); ?>, Year: <?php echo date('Y'); ?></p>
             <br>
+            <?php if ($unpaid == true){ ?>
+                <h3>Your subscription on month <?php echo date('F'); ?>, Year <?php echo date('Y'); ?> is not made </h3>
+               <form action="<?php echo site_url('Seller/subscriptionx'); ?>" method="post" enctype="multipart/form-data">
+                  <input type="file" name="userfile" class="form-group">
+                  <input type="hidden" name="month" value="<?php echo  date('F'); ?>">
+                  <input type="hidden" name="year" value="<?php  echo date('Y'); ?>">
+                  <br><br>
+                  <input type="submit" value="Update" name="submit">
+                </form>
+
+
+
+
+            <?php } ?>
           </div>
-          <?php foreach ($recent as $key => $rec) { ?>
-            <div class="list-group">
-                <div class="list-group-item">
-                  <p><?php echo $rec['name']; ?> / RM<?php echo $rec['price']; ?> / <?php echo $rec['email']; ?></p>
-                  <img src="http://dev.fypiqa.com/assets/imagex/<?php echo $rec['url']; ?>" style="width: 20%;height: 20%;">
-                  <button id="" class="btn btn-info latest" value="<?php echo $rec['id']; ?>">Completing / Added</button>
-                  <button id="" class="btn btn-danger cancel" value="<?php echo $rec['id']; ?>">Cancel</button>
-                </div>
-              <br>
+          
+            <div class="form-control">
+              <br><br><br>
+              <table id="Subscription" class="display" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Status</th>
+                    <th>Proof</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                <?php foreach ($read as $key => $rec) { ?>
+                  <tr>
+                    <td><?php echo $rec['month']; ?></td>
+                    <td><?php echo $rec['year']; ?></td>
+                    <td><?php echo $rec['status']; ?></td>
+                    <td><img src="<?php echo IMAGEX.'/subscription/'.$rec['photourl']; ?>" height="50px" width="50px"></td>
+
+                  </tr>
+                <?php } ?>
+                </tbody>
+              </table>
             </div>
-          <?php } ?>
+
          
         </div>
         <!-- /.col-lg-9 -->
@@ -130,6 +160,7 @@
     </div>
 
 </div>
+<br><br><br><br>
     <!-- /.container -->
 
     <!-- Footer -->

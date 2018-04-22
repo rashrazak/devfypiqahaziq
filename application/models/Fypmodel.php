@@ -116,6 +116,14 @@
             
             return true;
         }
+        public function addItemWithOne($id){
+
+            $this->db->where('id',$id);
+            $this->db->set('bought', '`bought`+ 1', FALSE);
+            $this->db->update('items');
+            
+            return true;
+        }
         public function cancelItem($id,$reason){
             $query = array(
                 'delivered'         => 'cannot',
@@ -243,7 +251,7 @@
             $query = array(
                 'status'         => $paid
              );
-            // $this->db->set('datebought', 'NOW()', FALSE);
+            $this->db->set('datebought', 'NOW()', FALSE);
             $this->db->where('email',$email);
             $this->db->update('cart', $query);
             
@@ -299,6 +307,16 @@
             $this->db->select('*'); 
             $this->db->from('payment');
             $this->db->where('email',$email);
+            $query =$this->db->get();
+            return $query->result_array();
+
+        }
+        public function historyListVendor($id){
+
+            $this->db->select('*'); 
+            $this->db->from('payment');
+            $this->db->join('items', 'payment.noitem = items.id');
+            $this->db->where('items.userid',$id);
             $query =$this->db->get();
             return $query->result_array();
 
@@ -366,6 +384,39 @@
 
             $this->db->where('id',$id);
             $this->db->update('cust_email', $query);
+            
+            return true;
+        }
+
+        public function check_subscription($month, $year, $emailx){
+            $this->db->select('status');
+            $this->db->where('month', $month);
+            $this->db->where('year', $year);
+            $this->db->where('email', $emailx);
+            $query = $this->db->get('subscription');
+            return $query->result_array();
+        }
+
+        public function read_subscription($email){
+            $query  = 'SELECT *'
+                    . ' FROM `subscription`'
+                    . ' WHERE `email` = ?';
+                    
+                    $bind   = array( $email );
+            
+            return $this->db->query( $query, $bind )->result_array();
+        }
+
+        public function pay_subscription($url,$month,$year,$status, $email){
+            $query = array(
+                'photourl'    => $url,
+                'month'       => $month,
+                'year'        => $year,
+                'status'      => $status,
+                'email'       => $email);
+
+
+            $this->db->insert('subscription', $query);
             
             return true;
         }
