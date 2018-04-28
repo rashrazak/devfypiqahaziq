@@ -118,7 +118,7 @@
                                 </div>                
                                 <span class="btn btn-default btn-sm"># </span>
                                 <div class="card-footer">
-                                <small class="text-muted"> <?php echo $item['paid'] == 0? 'unprocessed':'process'; ?> </small>
+                                <small class="text-muted"> <?php echo ($item['paid'] == 0)? 'unprocessed':'process'; ?> </small>
                                 </div>
                         </div>
                         </div>

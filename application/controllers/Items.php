@@ -26,7 +26,10 @@ class Items extends CI_Controller {
         $cart['email'] = $this->session->userdata('emailC');
         $cart['id'] = $this->input->post('id');
         //var_dump($cart);
-        $this->Fypmodel->add_into_cart($cart);
+        if (!empty($cart['id'])) {
+            $this->Fypmodel->add_into_cart($cart);
+        }
+
 
         $result['data'] = $this->Fypmodel->list_from_cart($cart['email']);
 
