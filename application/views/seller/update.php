@@ -77,10 +77,7 @@
                                         <input class="form-control" value="<?php echo $object->hp; ?>" type="text" name="hp">
                              
                                     <br><label>Maybank Account</label>
-                                        <input class="form-control" value="<?php echo $object->maybankaccount; ?>" type="text" name="maybankaccount">
-                                    
-                                    <br><label>Shop Name</label>
-                                        <input class="form-control" value="<?php echo $object->shopname; ?>" type="text" name="shopname">      
+                                        <input class="form-control" value="<?php echo $object->maybankaccount; ?>" type="text" name="maybankaccount">      
                                     
                                     <br><label>Company Name</label>
                                     <input class="form-control" value="<?php echo $object->companyname; ?>" type="text" name="companyname">

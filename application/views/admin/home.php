@@ -12,7 +12,7 @@
         if ($emailc){
 
             echo ' <li class="nav-item">
-            <a class="navbar-brand" href="#"><font color="gold"> Welcome '.$emailc.'</font></a>
+            <a class="navbar-brand" href="#"><font color="gold"> Welcome Admin '.$emailc.'</font></a>
           </li>';
           
             
@@ -78,7 +78,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4">
-			<h1>Buyer User</h1>
+      <h1 class="my-4">Admin Panel</h1>
+      <div class="list-group">
+        <a href="Admin/view_seller" class="list-group-item"> Search User</a>
+        <a href="Admin/view_receipt" class="list-group-item"> View Receipt</a>     
+      </div>
 		</div>
 		<div class="col-lg-4"><h1>Payment</h1></div>
 		<div class="col-lg-4"><h1>Item</h1></div>

@@ -21,8 +21,17 @@ class Admin extends CI_Controller {
     public function view_seller()
 	{
         if($this->session->userdata('logged_in')){
-            $data['logout'] = 'component/logout'; //data scoping
-             $this->load->view('admin/view_seller',$data);
+            $search = $this->input->get('search');
+                if (empty($search)) {
+                    $return['data'] = $this->Fypmodel->read_user_allSearch();
+                    $return['searchx'] = "";
+                }else{
+                    $return['data'] = $this->Fypmodel->searchListUser($search);
+                    $return['searchx'] = $search;
+                     // var_dump($return);exit;
+                }
+                // var_dump($return);exit;
+             $this->load->view('admin/view_seller',$return);
         
 
         }else{
@@ -32,11 +41,18 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function view_notification()
-	{
+    public function seller_details()
+    {
         if($this->session->userdata('logged_in')){
-            $data['logout'] = 'component/logout'; //data scoping
-             $this->load->view('admin/view_notification',$data);
+            $seller_details = $this->input->get('seller');
+            $return['data'] = $this->Fypmodel->upd8seller2($seller_details);
+            // var_dump($return['data']['id']);exit;
+            $return['items'] = $this->Fypmodel->getItemsAdmin($return['data']['id']);
+            // foreach ($return['items'] as $key => $items) {
+            //     # code...
+            // }
+            // var_dump($return);exit;
+             $this->load->view('admin/seller_details',$return);
         
 
         }else{
@@ -46,20 +62,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function view_buyer()
-	{
-        if($this->session->userdata('logged_in')){
-            $data['logout'] = 'component/logout'; //data scoping
-             $this->load->view('admin/view_buyer',$data);
-        
-
-        }else{
-
-            redirect('Login');
-
-        }
-    }
-    public function view_report()
+    public function view_receipt()
 	{
         if($this->session->userdata('logged_in')){
             $data['logout'] = 'component/logout'; //data scoping

@@ -52,6 +52,25 @@
             $query = $this->db->get('user');
             return $query->result();
         }
+
+        public function upd8seller2($user_id){
+            $query  = 'SELECT *'
+                    . ' FROM `user`'
+                    . ' WHERE `id` = ?';
+                    
+                    $bind   = array( $user_id );
+            
+            return $this->db->query( $query, $bind )->row_array();
+        }
+        public function getItemsAdmin($user_id){
+            $query  = 'SELECT *'
+                    . ' FROM `items`'
+                    . ' WHERE `userid` = ?';
+                    
+                    $bind   = array( $user_id );
+            
+            return $this->db->query( $query, $bind )->result_array();
+        }
         public function upd8seller_confirm($data, $idx){
             $this->db->where('id',$idx);
             $this->db->update('user',$data);
@@ -108,7 +127,8 @@
         }
         public function prepareItem($id){
             $query = array(
-                'delivered'         => 'delivered'
+                'delivered'         => 'delivered',
+                'bought'            => 1
              );
 
             $this->db->where('id',$id);
@@ -118,8 +138,9 @@
         }
         public function addItemWithOne($id){
 
-            $this->db->where('id',$id);
+            
             $this->db->set('bought', '`bought`+ 1', FALSE);
+            $this->db->where('id',$id);
             $this->db->update('items');
             
             return true;
@@ -193,6 +214,14 @@
             
             return $this->db->query( $query, $bind )->result_array();
         }
+        public function read_user_allSearch(){
+
+            $query  = 'SELECT *'
+                    . ' FROM `user`';        
+            
+            return $this->db->query( $query )->result_array();
+        }
+
         //customer
         public function checkCustomer($cust_email){
             $this->db->where("emailx",$cust_email); 
@@ -298,6 +327,17 @@
             $this->db->or_like('user.city' , $search);
             $this->db->or_like('user.address' , $search);
             $this->db->order_by('bought desc');
+            $query =$this->db->get();
+            return $query->result_array();
+
+        }
+        public function searchListUser($search){
+
+            $this->db->select('*'); 
+            $this->db->from('user');
+            $this->db->or_like('city' , $search);
+            $this->db->or_like('address' , $search);
+            $this->db->order_by('id asc');
             $query =$this->db->get();
             return $query->result_array();
 
