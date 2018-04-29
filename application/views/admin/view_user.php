@@ -93,7 +93,7 @@
             
                     <div  class="list-group-item mb-4 ">
                         <label for="">Search user <i class="fa  fa-search"></i></label>
-                    <form action="view_seller" method="get">
+                    <form action="view_user" method="get">
                         <input type="text" name="search" placeholder="<?php echo $searchx; ?>"><br><br>
                         <input type="submit" value="Submit">
                     </form>
@@ -114,13 +114,12 @@
                         <div class="card h-100">
                             <div class="card-body">
                             <h4 class="card-title">
-                            <a href="<?php echo base_url()?>Admin/seller_details?seller=<?php echo $seller['id']; ?>"><?php echo $seller['fname']; ?></a>
+                            <a href="<?php echo base_url()?>Admin/user_details?user=<?php echo $seller['id']; ?>"><?php echo $seller['name']; ?></a>
                             </h4>
-                            <h5>IC :<?php echo $seller['icpp']; ?></h5>
-                            <button id="deleteSeller" class="btn btn-sm btn-danger" value="<?php echo $seller['id']; ?>"> Delete </button>
+                            <h5><?php echo $seller['emailx']; ?></h5>
                             </div>                                            
                             <div class="card-footer">
-                            <small class="text-muted">HP  <?php echo $seller['hp']; ?> </small>
+                            <small class="text-muted">From: <?php echo $seller['type']; ?> </small>
                             </div>
                         </div>
                         </div>

@@ -6,6 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+
+
 <script>
   // Initialize Firebase
   var config = {
@@ -26,6 +28,7 @@
  <script src="<?php echo base_url();?>assets/js/cart.js"></script>
  <script src="<?php echo base_url();?>assets/js/SellerOrder.js"></script>
  <script src="<?php echo base_url();?>assets/js/loginSignUp.js"></script>
+
  <script>
   if (document.getElementsByClassName("mySlides").length > 0) {
     var myIndex = 0;

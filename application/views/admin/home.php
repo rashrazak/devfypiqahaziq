@@ -80,12 +80,39 @@
 		<div class="col-lg-4">
       <h1 class="my-4">Admin Panel</h1>
       <div class="list-group">
-        <a href="Admin/view_seller" class="list-group-item"> Search User</a>
-        <a href="Admin/view_receipt" class="list-group-item"> View Receipt</a>     
+        <a href="Admin/view_seller" class="list-group-item"> Search Seller</a>
+        <a href="Admin/view_delivery" class="list-group-item"> View Delivery</a>  
+        <a href="Admin/view_user" class="list-group-item"> View User</a>  
       </div>
 		</div>
-		<div class="col-lg-4"><h1>Payment</h1></div>
-		<div class="col-lg-4"><h1>Item</h1></div>
+		<div class="col-lg-8"><h4>Latest Buyer</h4>
+
+    </div>
+		<div class="col-lg-12"><h4>Latest Receipt</h4>
+       <table id="getCart" class="display" style="background-color: #476b6b;">
+          <thead>
+            <tr>
+
+              <th>Date</th>
+              <th>Status</th>
+              <th>Quantity</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach ($cart as $key => $subs) { ?>
+          <tr>
+
+           <td><?php echo $subs['datebought'] ?></td>
+           <td><?php echo $subs['delivered'] ?></td>
+           <td><?php echo $subs['quantity'] ?></td>
+           <td><?php echo $subs['reason'] ?></td>
+
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
 	</div>
 </div>
 <?php 

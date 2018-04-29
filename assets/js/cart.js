@@ -27,6 +27,20 @@ $(document).ready(function() {
         
     });
 
+    $(".deleteSeller").click(function(){
+        var id = $(this).val();
+        console.log(id);
+        let answer = confirm('Are you sure you want to remove this seller?');
+        if (answer){
+
+            ajax23(id);
+           
+        }else {
+            location.reload(true);
+        }
+        
+    });
+
 
 
     $('.showCompany').click(function() {
@@ -64,6 +78,21 @@ $(document).ready(function() {
 
     function ajax2(id){
         var path = 'http://dev.fypiqa.com/index.php/ajax/deletecart';
+            return $.ajax({
+                type: "POST",
+                data: {
+                    id:id
+                },
+                url: path,
+                success: function(data){
+                    console.log(data);
+                    location.reload(true);
+                }
+            });
+    }
+
+    function ajax23(id){
+        var path = 'http://dev.fypiqa.com/index.php/ajax/deleteseller';
             return $.ajax({
                 type: "POST",
                 data: {

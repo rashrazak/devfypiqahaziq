@@ -64,6 +64,13 @@ class Ajax extends CI_Controller {
 
     }
 
+    public function deletecart(){
+        $id = $this->input->post( 'id' );
+        $this->Fypmodel->del_seller($id);
+        echo json_encode(array('success' => $id ,'return'=>'item deleted' ));
+
+    }
+
     public function cartCompany(){
         $id = $this->input->post( 'id' );
         $return = $this->Fypmodel->getCompanyDetails($id);

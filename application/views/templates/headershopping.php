@@ -16,7 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url();?>assets/css/shop-homepage.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
     <script src="https://use.fontawesome.com/d134992b65.js"></script>
     <style type="text/css">
       

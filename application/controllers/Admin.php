@@ -41,6 +41,29 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function view_user()
+    {
+        if($this->session->userdata('logged_in')){
+            $search = $this->input->get('search');
+                if (empty($search)) {
+                    $return['data'] = $this->Fypmodel->read_customer_allSearch();
+                    $return['searchx'] = "";
+                }else{
+                    $return['data'] = $this->Fypmodel->searchListCustomer($search);
+                    $return['searchx'] = $search;
+                     // var_dump($return);exit;
+                }
+                // var_dump($return);exit;
+             $this->load->view('admin/view_user',$return);
+        
+
+        }else{
+
+            redirect('Login');
+
+        }
+    }
+
     public function seller_details()
     {
         if($this->session->userdata('logged_in')){
@@ -48,12 +71,32 @@ class Admin extends CI_Controller {
             $return['data'] = $this->Fypmodel->upd8seller2($seller_details);
             // var_dump($return['data']['id']);exit;
             $return['items'] = $this->Fypmodel->getItemsAdmin($return['data']['id']);
-            
-            // foreach ($return['items'] as $key => $items) {
-            //     # code...
-            // }
-            // var_dump($return);exit;
+            $return['read'] = $this->Fypmodel->read_subscription($return['data']['emel']);
+            foreach ($return['items'] as $key => $items) {
+                $return['jobs'][$key] = $this->Fypmodel->getCartActivity($items['id']);
+            }
+            // var_dump( $return['jobs']);exit;
              $this->load->view('admin/seller_details',$return);
+        
+
+        }else{
+
+            redirect('Login');
+
+        }
+    }
+
+    public function user_details()
+    {
+        if($this->session->userdata('logged_in')){
+            $seller_details = $this->input->get('user');
+            $return['data'] = $this->Fypmodel->upd8seller3($seller_details);
+            // var_dump($return['data']['id']);exit;
+            $return['cart'] = $this->Fypmodel->getCartAdmin($return['data']['emailx']);
+            $return['payment'] = $this->Fypmodel->read_payment($return['data']['emailx']);
+
+            // var_dump( $return);exit;
+             $this->load->view('admin/user_details',$return);
         
 
         }else{

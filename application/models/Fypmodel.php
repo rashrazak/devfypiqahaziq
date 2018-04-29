@@ -62,12 +62,32 @@
             
             return $this->db->query( $query, $bind )->row_array();
         }
+
+        public function upd8seller3($user_id){
+            $query  = 'SELECT *'
+                    . ' FROM `cust_email`'
+                    . ' WHERE `id` = ?';
+                    
+                    $bind   = array( $user_id );
+            
+            return $this->db->query( $query, $bind )->row_array();
+        }
         public function getItemsAdmin($user_id){
             $query  = 'SELECT *'
                     . ' FROM `items`'
                     . ' WHERE `userid` = ?';
                     
                     $bind   = array( $user_id );
+            
+            return $this->db->query( $query, $bind )->result_array();
+        }
+
+        public function getCartAdmin($email){
+            $query  = 'SELECT *'
+                    . ' FROM `cart`'
+                    . ' WHERE `email` = ?';
+                    
+                    $bind   = array( $email );
             
             return $this->db->query( $query, $bind )->result_array();
         }
@@ -171,6 +191,12 @@
             $this->db->delete('cart');
             return true;
         }
+        public function del_seller($id){
+
+            $this->db->where('id',$id);
+            $this->db->delete('cart');
+            return true;
+        }
         public function read_item($user_id){
 
                 $query 	= 'SELECT *'
@@ -233,6 +259,15 @@
             
             return $this->db->query( $query )->result_array();
         }
+
+        public function read_customer_allSearch(){
+
+            $query  = 'SELECT *'
+                    . ' FROM `cust_email`';        
+            
+            return $this->db->query( $query )->result_array();
+        }
+
 
         //customer
         public function checkCustomer($cust_email){
@@ -328,6 +363,15 @@
             return true;
 
         }
+        public function getCartActivity($id){
+             $query     = 'SELECT *'
+                    . ' FROM `cart`'
+                    . ' WHERE `itemid` = ?';
+                    
+                    $bind   = array( $id );
+            
+            return $this->db->query( $query, $bind )->result_array();
+        }
         public function searchList($search){
 
             $this->db->select('*'); 
@@ -349,6 +393,17 @@
             $this->db->from('user');
             $this->db->or_like('city' , $search);
             $this->db->or_like('address' , $search);
+            $this->db->order_by('id asc');
+            $query =$this->db->get();
+            return $query->result_array();
+
+        }
+        public function searchListCustomer($search){
+
+            $this->db->select('*'); 
+            $this->db->from('cust_email');
+            $this->db->or_like('name' , $search);
+            $this->db->or_like('emailx' , $search);
             $this->db->order_by('id asc');
             $query =$this->db->get();
             return $query->result_array();
@@ -452,6 +507,15 @@
         public function read_subscription($email){
             $query  = 'SELECT *'
                     . ' FROM `subscription`'
+                    . ' WHERE `email` = ?';
+                    
+                    $bind   = array( $email );
+            
+            return $this->db->query( $query, $bind )->result_array();
+        }
+        public function read_payment($email){
+            $query  = 'SELECT *'
+                    . ' FROM `payment`'
                     . ' WHERE `email` = ?';
                     
                     $bind   = array( $email );
