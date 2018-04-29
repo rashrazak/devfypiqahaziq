@@ -48,6 +48,7 @@ class Admin extends CI_Controller {
             $return['data'] = $this->Fypmodel->upd8seller2($seller_details);
             // var_dump($return['data']['id']);exit;
             $return['items'] = $this->Fypmodel->getItemsAdmin($return['data']['id']);
+            
             // foreach ($return['items'] as $key => $items) {
             //     # code...
             // }

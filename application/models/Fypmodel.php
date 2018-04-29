@@ -139,9 +139,12 @@
         public function addItemWithOne($id){
 
             
-            $this->db->set('bought', '`bought`+ 1', FALSE);
-            $this->db->where('id',$id);
-            $this->db->update('items');
+                $query    = 'UPDATE `items` set `bought`= `bought` + 1'
+                        . ' where `id`= ? ';
+
+                $bind   = array( $id );        
+                
+                return $this->db->query( $query, $bind );
             
             return true;
         }
@@ -177,6 +180,15 @@
                 $bind 	= array( $user_id );		
                 
                 return $this->db->query( $query, $bind )->result_array();
+        }
+        public function read_cart_userid($id){
+
+            $query  = 'SELECT `itemid`'
+                    . ' FROM `cart`'
+                    . ' WHERE `id` = ?';
+            $bind   = array( $id );        
+            
+            return $this->db->query( $query, $bind )->row_array();
         }
         public function read_item_customer($id){
 

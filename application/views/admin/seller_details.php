@@ -38,6 +38,18 @@
               <p>Total Items :<?php echo count($items); ?></p>
           </div>
         </div>
+        <h4>Subscription Detail's</h4>
+        <div class="list-group">
+          <div  class="list-group-item">
+              <p>Name :<?php echo $data['fname']; ?></p>
+              <p>ICPP :<?php echo $data['icpp']; ?></p>
+              <p>Phone :<?php echo $data['hp']; ?></p>
+              <p>Address: <br><?php echo $data['address']; ?></p>
+              <p>City :<?php echo $data['city']; ?></p>
+              <p>Maybank Account :<?php echo $data['maybankaccount']; ?></p>
+              <p>Total Items :<?php echo count($items); ?></p>
+          </div>
+        </div>
     </div>
     
     <div class="col-lg-9">
