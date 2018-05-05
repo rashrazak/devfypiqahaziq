@@ -77,7 +77,7 @@
 </nav>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-4">
+		<div class="col-lg-3">
       <h1 class="my-4">Admin Panel</h1>
       <div class="list-group">
         <a href="Admin/view_seller" class="list-group-item"> Search Seller</a>
@@ -85,33 +85,35 @@
         <a href="Admin/view_user" class="list-group-item"> View User</a>  
       </div>
 		</div>
-		<div class="col-lg-8"><h4>Latest Buyer</h4>
-
-    </div>
-		<div class="col-lg-12"><h4>Latest Receipt</h4>
-       <table id="getCart" class="display" style="background-color: #476b6b;">
+		<div class="col-lg-9"><h4>Driver Availability</h4>
+         <table id="getCart" class="display table" >
           <thead>
             <tr>
-
-              <th>Date</th>
-              <th>Status</th>
-              <th>Quantity</th>
-              <th>Reason</th>
+              <th>No</th>
+              <th>Name</th> 
+              <th>Phone</th>
+              <th>Transport</th>
+              <th>Plate Number</th>
+              <th>Availability</th>
             </tr>
           </thead>
           <tbody>
-          <?php foreach ($cart as $key => $subs) { ?>
+          <?php foreach ($riders as $key => $subs) { ?>
           <tr>
-
-           <td><?php echo $subs['datebought'] ?></td>
-           <td><?php echo $subs['delivered'] ?></td>
-           <td><?php echo $subs['quantity'] ?></td>
-           <td><?php echo $subs['reason'] ?></td>
+            <td><?php echo $subs['id'] ?></td>
+            <td><?php echo $subs['name'] ?></td>
+            <td><?php echo $subs['hp'] ?></td>
+            <td><?php echo $subs['transport'] ?></td>
+            <td><?php echo $subs['plate'] ?></td>
+            <td><?php echo $subs['status'] ?></td>
 
           </tr>
           <?php } ?>
         </tbody>
       </table>
+    </div>
+		<div class="col-lg-12"><h4>Latest Receipt</h4>
+
     </div>
 	</div>
 </div>

@@ -1,6 +1,15 @@
 <?php 
 
     class Fypmodel extends CI_Model{
+        public function read_riders(){
+            $query  = 'SELECT *'
+                    . ' FROM `deliveryguy`';
+                    // . ' WHERE `id` = ?';
+                    
+                    // $bind   = array( $user_id );
+            
+            return $this->db->query( $query )->result_array();
+        }
         //register
         public function register_user( $fnamex, $addressx, $icppx, $hpx, $maybankx, $emailx , $passwordx,$city){
                
@@ -374,7 +383,7 @@
         }
         public function searchList($search){
 
-            $this->db->select('*'); 
+            $this->db->select('items.*, items.id as itemid'); 
             $this->db->from('items');
             $this->db->join('user', 'user.id = items.userid');
             $this->db->where('items.showpublic',1);

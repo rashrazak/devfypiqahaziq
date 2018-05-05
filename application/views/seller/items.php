@@ -84,13 +84,10 @@
           <h1 class="my-4"> Item's</h1>
           <div class="list-group">
             <a href="#" class="list-group-item"> Items</a>
-            <a href="#" class="list-group-item"> Buyer</a>
-            <a href="#" class="list-group-item"> Sales</a>
-          </div>
-          <br><br>
-          <div class="list-group">
             <a href="add_items" class="list-group-item"> Add Items</a>
           </div>
+          <br><br>
+
 
         </div>
         <!-- /.col-lg-3 -->

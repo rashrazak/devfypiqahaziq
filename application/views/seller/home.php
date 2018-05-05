@@ -91,6 +91,35 @@
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
           <div class="list-group">  
+            <h4>Delivery Guy..</h4> 
+            <br>
+          </div>
+        <table id="getCart" class="display table" >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Name</th> 
+              <th>Phone</th>
+              <th>Transport</th>
+              <th>Plate Number</th>
+              <th>Availability</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach ($riders as $key => $subs) { ?>
+          <tr>
+            <td><?php echo $subs['id'] ?></td>
+            <td><?php echo $subs['name'] ?></td>
+            <td><?php echo $subs['hp'] ?></td>
+            <td><?php echo $subs['transport'] ?></td>
+            <td><?php echo $subs['plate'] ?></td>
+            <td><?php echo $subs['status'] ?></td>
+
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+          <div class="list-group">  
             <h4>Latest bought..</h4> 
             <br>
           </div>
@@ -104,7 +133,7 @@
                 </div>
               <br>
             </div>
-          <?php } ?>
+          <?php } ?>          
          
         </div>
         <!-- /.col-lg-9 -->

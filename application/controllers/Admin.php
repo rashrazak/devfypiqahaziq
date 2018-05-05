@@ -8,8 +8,10 @@ class Admin extends CI_Controller {
     public function index()
 	{
         if($this->session->userdata('logged_in')){
-            $data['logout'] = 'component/logout'; //data scoping
-             $this->load->view('admin/home',$data);
+            // $data['logout'] = 'component/logout'; //data scoping
+            $data['riders'] = $this->Fypmodel->read_riders();
+            // var_dump($data['riders']);exit;
+            $this->load->view('admin/home',$data);
         
 
         }else{

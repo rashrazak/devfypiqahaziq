@@ -11,6 +11,7 @@ class Seller extends CI_Controller {
             $data['recent']= $this->Fypmodel->recentBuyer($user_id);
             // $data['previous']= $this->Fypmodel->previousBuyer($user_id);
             $data['shopName']= $this->Fypmodel->shopName($user_id);
+            $data['riders'] = $this->Fypmodel->read_riders();
             // var_dump($data);exit;
             $this->load->view('seller/home', $data);
             
