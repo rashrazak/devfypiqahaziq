@@ -83,7 +83,7 @@ class Items extends CI_Controller {
             if ($return == true) {
                 $this->Fypmodel->paid_cart($emailx);
                 $this->session->set_flashdata('success','Succesfully Approved Thank You');
-                redirect('Items');
+                redirect('Items/search');
             }
         
         

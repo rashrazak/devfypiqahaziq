@@ -132,3 +132,6 @@ class Register extends CI_Controller {
 		//$this->load->view('sellerRegister'); //register in login page
 	}
 
+
+}
+
