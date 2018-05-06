@@ -105,7 +105,11 @@
             <td><?php echo $subs['hp'] ?></td>
             <td><?php echo $subs['transport'] ?></td>
             <td><?php echo $subs['plate'] ?></td>
-            <td><?php echo $subs['status'] ?></td>
+            <td><?php if ($subs['status'] == 0){
+              echo 'Not Available';
+            }else{
+              echo 'Available';
+            } ?></td>
 
           </tr>
           <?php } ?>
