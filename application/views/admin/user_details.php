@@ -4,7 +4,6 @@
 ?>
  <!-- Navigation -->
      <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
     <script type="text/javascript " src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript " src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script> 
     <script type="text/javascript " src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
@@ -92,7 +91,6 @@
             <table id="getPayment" class="display" style="background-color: #476b6b;">
                     <thead>
                       <tr>
-                        <th>Payment ID</th>
                         <th>Time</th>
                         <th>Price</th>
                         <th>Phone</th>
@@ -102,10 +100,10 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <?php $totalx = 0; ?>
                       <?php foreach ($payment as $key => $subsx) { ?>
                       <tr>
 
-                       <td><?php echo $subsx['id'] ?></td>
                        <td><?php echo $subsx['time'] ?></td>
                        <td>RM <?php echo $subsx['price'] ?></td>
                        <td><?php echo $subsx['hp'] ?></td>
@@ -113,19 +111,21 @@
                        <td><?php
                        if ($subsx['paid'] == 0) { ?>
                          <blockquote>Unpaid</blockquote>
+                         <button id="paidx" class="btn btn-warning"  value="<?php echo $subsx['id']; ?>">Click to paid</button>
                        <?php }else{ ?>
                         <i>Paid</i>
                        <?php } ?>
                        </td>
                        <td><img class="card-img-top" src="<?php echo IMAGEX.$subsx['url']; ?>" alt=""></td>
+                      <?php $totalx = $totalx + $subsx['price']; ?>
 
                       </tr>
                       <?php } ?>
                   </tbody>
               </table>
-          
           </div>
         </div>
+        <h1><?php echo ' Total Sales: RM'.$totalx ; ?></h1>
       </div>
       <div class="row">
        
@@ -136,6 +136,6 @@
   </div>        
 </div>
    
-
+     <script src="<?php echo base_url();?>assets/js/cart.js"></script>
 
 

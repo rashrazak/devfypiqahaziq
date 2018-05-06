@@ -80,8 +80,7 @@
 		<div class="col-lg-3">
       <h1 class="my-4">Admin Panel</h1>
       <div class="list-group">
-        <a href="Admin/view_seller" class="list-group-item"> Search Seller</a>
-        <a href="Admin/view_delivery" class="list-group-item"> View Delivery</a>  
+        <a href="Admin/view_seller" class="list-group-item"> Search Seller</a>  
         <a href="Admin/view_user" class="list-group-item"> View User</a>  
       </div>
 		</div>
@@ -116,7 +115,7 @@
         </tbody>
       </table>
     </div>
-		<div class="col-lg-12"><h4>Latest Receipt</h4>
+		
 
     </div>
 	</div>

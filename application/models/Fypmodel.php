@@ -144,6 +144,17 @@
             
             return true;
         }
+
+        public function makeItPaidModel($id){
+            $query = array(
+                'paid'         => 1
+             );
+
+            $this->db->where('id',$id);
+            $this->db->update('payment', $query);
+            
+            return true;
+        }
         public function showitem($id){
             $query = array(
                 'showpublic'         => 1

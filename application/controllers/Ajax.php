@@ -70,6 +70,12 @@ class Ajax extends CI_Controller {
         echo json_encode(array('success' => $id ,'return'=>$return ));
 
     }
+    public function makeItPaid(){
+        $id = $this->input->post( 'id' );
+        $return = $this->Fypmodel->makeItPaidModel($id);
+        echo json_encode(array('success' => $id ,'return'=>$return ));
+
+    }
     public function prepareItem(){
         // $id = $this->input->post( 'id' );
         $id = 2;    

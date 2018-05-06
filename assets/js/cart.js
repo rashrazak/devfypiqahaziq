@@ -105,5 +105,26 @@ $(document).ready(function() {
                 }
             });
     }
+
+    $('#paidx').click(function() {
+        var comp = $(this).val();
+        console.log(comp);
+        var path = 'http://dev.fypiqa.com/index.php/ajax/makeItPaid';
+        return $.ajax({
+            type: "POST",
+            data: {
+                id:comp
+            },
+            url: path,
+            success: function(data){
+                console.log(data);
+                location.reload(true);
+
+            }
+        });
+       
+        
+
+    });
     
 });
