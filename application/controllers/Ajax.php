@@ -77,8 +77,7 @@ class Ajax extends CI_Controller {
 
     }
     public function prepareItem(){
-        // $id = $this->input->post( 'id' );
-        $id = 2;    
+        $id = $this->input->post( 'id' );   
         $return = $this->Fypmodel->prepareItem($id);
         $read   = $this->Fypmodel->read_cart_userid($id);
         $returnx= $this->Fypmodel->read_item_customer($read['itemid']);
