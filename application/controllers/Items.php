@@ -21,7 +21,7 @@ class Items extends CI_Controller {
         $this->load->view('viewitem', $data);
     }
     public function cart(){
-        $cart = array();
+       $cart = array();
         $cart['quantity'] = $this->input->post('quantity');
         $cart['email'] = $this->session->userdata('emailC');
         $cart['id'] = $this->input->post('id');
@@ -29,7 +29,14 @@ class Items extends CI_Controller {
         if (!empty($cart['id'])) {
             $this->Fypmodel->add_into_cart($cart);
         }
+        redirect('Items/cart_before');
 
+
+
+
+    }
+    public function cart_before(){
+        $cart['email'] = $this->session->userdata('emailC');
 
         $result['data'] = $this->Fypmodel->list_from_cart($cart['email']);
 

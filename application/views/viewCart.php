@@ -60,7 +60,7 @@
               <a class="nav-link" href="<?php echo site_url('Seller/update'); ?>" data-toggle="tooltip" data-placement="top" title="Update/Setting"><font color=""><i class="fa fa-cogs"></i></font></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="Logout" data-toggle="tooltip" data-placement="top" title="Sign Out E-RBAS"><font color="red"><i class="fa fa-sign-out"></i></font></a>
+            <a class="nav-link" href="<?php echo site_url('Logout'); ?>" data-toggle="tooltip" data-placement="top" title="Sign Out E-RBAS"><font color="red"><i class="fa fa-sign-out"></i></font></a>
           </li>
         
                
